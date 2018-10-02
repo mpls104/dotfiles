@@ -1,0 +1,47 @@
+[user]
+  name = Ryota Kusano
+	email = 
+[color]
+	ui = auto
+[core]
+	autocrlf = input
+	whitespace = trailing-space,space-before-tab
+	excludesfile = /Users/r_kusano/.gitignore_global
+	editor = vim
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[push]
+	default = current
+[browse-remote "github.com"]
+	top = https://{host}/{path}
+	ref = https://{host}/{path}/tree/{short_ref}
+	rev = https://{host}/{path}/commit/{commit}
+	pr = https://{host}/{path}/pull/{short_ref}
+	file = "https://{host}/{path}/{file.directory? and :tree or :blob}/{short_rev}/{file}{lines && \"#L%s\" % lines.join(\"-\")}"
+[alias]
+ graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+ stt = status -uno
+ adry = add . --dry-run
+ st = status
+ co = checkout
+ br = branch
+ cm = commit
+ df = diff
+ g = git
+ dfc = diff chached
+ poh = push origin HEAD
+ dev = checkout develop
+ tmp = commit -a -m "tmp"
+ rst = reset HEAD^
+ pus = pull upstream develop
+ pfoh = push --force-with-lease origin HEAD
