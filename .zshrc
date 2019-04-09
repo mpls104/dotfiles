@@ -8,6 +8,17 @@ export PATH="$HOME/bin:$PATH"
 autoload -Uz colors
 colors
 
+source ~/.zplug/init.zsh
+
+# curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
 # zplug
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-completions"
@@ -20,13 +31,7 @@ fpath=(~/.zplug/repos/zsh-users/zsh-completions/src ~/.zsh/completion $fpath)
 autoload -Uz compinit
 compinit -i
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
+
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
@@ -61,10 +66,10 @@ alias -g GI='| grep -ri'
 
 
 # エイリアス
-alias lst='ls -ltr --color=auto'
-alias l='ls -ltr --color=auto'
-alias la='ls -la --color=auto'
-alias ll='ls -l --color=auto'
+alias lst='ls -ltr'
+alias l='ls -ltr'
+alias la='ls -la'
+alias ll='ls -l'
 alias so='source'
 alias v='vim'
 alias vi='vim'
@@ -75,7 +80,7 @@ alias h='fc -lt '%F %T' 1'
 alias cp='cp -i'
 alias rm='rm -i'
 alias mkdir='mkdir -p'
-alias ..='c ../'
+alias ..='cd ../'
 alias back='pushd'
 alias diff='diff -U1'
 
